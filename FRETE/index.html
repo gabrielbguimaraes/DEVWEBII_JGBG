@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Frete</title>
+    <script>
+        function calcularFrete() {
+            var numPecas = parseInt(prompt("Digite o número total de peças a serem transportadas:"));
+            var rastreamento = prompt("Deseja rastreamento na entrega? (S-Sim, N-Não):").toUpperCase();
+            var regiao = parseInt(prompt("Digite o número da região de entrega: \n1 - Sudeste \n2 - Sul \n3 - Centro-Oeste"));
+            var distancia = parseInt(prompt("Digite a distância total em quilômetros até o destino:"));
+            
+
+            var valoresPorPeca = {1: 1.20, 2: 1.10, 3: 1.15};
+            var descontos = {1: 0.12, 2: 0.10, 3: 0.08};
+            
+
+            var valorBase = valoresPorPeca[regiao];
+            var valorDesconto = valorBase - (valorBase * descontos[regiao]);
+            var custoFrete = numPecas > 1000 ? (1000 * valorBase + (numPecas - 1000) * valorDesconto) : (numPecas * valorBase);
+            
+
+            var custoCombustivel = distancia; 
+
+            var custoRastreamento = rastreamento === 'S' ? 200 : 0;
+
+            var valorTotal = custoFrete + custoCombustivel + custoRastreamento;
+
+            alert("O valor total do frete é de R$ " + valorTotal.toFixed(2) + 
+                  ", incluindo R$ " + custoCombustivel.toFixed(2) + " para combustível" + 
+                  (custoRastreamento ? " e R$ " + custoRastreamento.toFixed(2) + " para rastreamento." : "."));
+        }
+    </script>
+</head>
+<body>
+    <h1>Calculadora de Frete</h1>
+    <button onclick="calcularFrete()">Calcular Frete</button>
+</body>
+</html>

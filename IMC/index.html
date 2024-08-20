@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de IMC</title>
+    <script>
+        function calcularIMC() {
+            var nome = prompt("Por favor, insira seu nome:");
+            var altura = parseFloat(prompt("Insira sua altura em centímetros:"));
+            var peso = parseFloat(prompt("Insira seu peso em quilogramas:"));
+
+            altura = altura / 100;
+
+            var imc = peso / (altura * altura);
+
+
+            var classificacao;
+            if (imc < 16) {
+                classificacao = "Baixo peso muito grave";
+            } else if (imc < 17) {
+                classificacao = "Baixo peso grave";
+            } else if (imc < 18.5) {
+                classificacao = "Baixo peso";
+            } else if (imc < 25) {
+                classificacao = "Peso normal";
+            } else if (imc < 30) {
+                classificacao = "Sobrepeso";
+            } else if (imc < 35) {
+                classificacao = "Obesidade grau I";
+            } else if (imc < 40) {
+                classificacao = "Obesidade grau II";
+            } else {
+                classificacao = "Obesidade grau III";
+            }
+
+            alert(nome + " possui um Índice de Massa Corporal igual a " + imc.toFixed(2) + ", sendo classificado como: " + classificacao);
+        }
+    </script>
+</head>
+<body>
+    <h1>Calculadora de IMC</h1>
+    <button onclick="calcularIMC()">Calcular IMC</button>
+</body>
+</html>

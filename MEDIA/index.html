@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Média Ponderada</title>
+    <script>
+        function calcularMedia() {
+            var nota1 = parseFloat(prompt("Insira a primeira nota (0 a 10):"));
+            var peso1 = parseInt(prompt("Insira o peso da primeira nota:"));
+            var nota2 = parseFloat(prompt("Insira a segunda nota (0 a 10):"));
+            var peso2 = parseInt(prompt("Insira o peso da segunda nota:"));
+            var nota3 = parseFloat(prompt("Insira a terceira nota (0 a 10):"));
+            var peso3 = parseInt(prompt("Insira o peso da terceira nota:"));
+
+            // Validação de dados de entrada
+            if (isNaN(nota1) || isNaN(nota2) || isNaN(nota3) ||
+                nota1 < 0 || nota1 > 10 || nota2 < 0 || nota2 > 10 || nota3 < 0 || nota3 > 10 ||
+                isNaN(peso1) || isNaN(peso2) || isNaN(peso3) ||
+                peso1 < 1 || peso2 < 1 || peso3 < 1) {
+                alert("Por favor, insira notas entre 0 e 10 e pesos positivos.");
+                return;
+            }
+
+            // Cálculo da média ponderada
+            var somaPesos = peso1 + peso2 + peso3;
+            var media = (nota1 * peso1 + nota2 * peso2 + nota3 * peso3) / somaPesos;
+
+            // Classificação da média
+            var classificacao;
+            if (media >= 9) {
+                classificacao = "Excelente";
+            } else if (media >= 7) {
+                classificacao = "Bom";
+            } else if (media >= 5) {
+                classificacao = "Regular";
+            } else {
+                classificacao = "Insuficiente";
+            }
+
+            // Exibição do resultado
+            alert("A média ponderada do aluno é " + media.toFixed(2) + ", sendo classificada como: " + classificacao);
+        }
+    </script>
+</head>
+<body>
+    <h1>Calculadora de Média Ponderada</h1>
+    <button onclick="calcularMedia()">Calcular Média</button>
+</body>
+</html>

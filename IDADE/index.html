@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+            function classificar_idade(){
+            var classe = "";
+            var nome = document.getElementById("Nome").value;
+            var idade = parseInt(document.getElementById("Idade").value);
+
+            if (idade > 0 && idade < 15){
+                classe = "Criança";
+            }
+            else if (idade >= 15 && idade < 30){
+                classe = "Jovem";
+            }
+            else if (idade >= 30 && idade < 60){
+                classe = "Adulto";
+            }
+            else{
+                classe = "Idoso";
+            }
+
+            alert(nome + " tem " + idade + " anos e é classificado como " + classe);
+        }
+
+    </script>
+</head>
+<body>
+    <h1>Classificação Etária</h1>
+    <form action="/enviar" method="post">
+        <label for="Nome" >Nome:</label><br>
+        <input type="text" id="Nome" name="Nome"><br>
+
+        <label for="Idade" >Idade:</label><br>
+        <input type="text" id="Idade" name="Idade"><br>
+
+        <input type="button" value="Classificar" onclick="classificar_idade()">
+</body>
+</html>

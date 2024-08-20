@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Folha de Pagamento</title>
+    <script>
+        function calcularPagamento() {
+            var codigoFuncionario = prompt("Digite o código do funcionário:");
+            var horasTrabalhadas = parseInt(prompt("Digite o número de horas trabalhadas no mês:"));
+            var turnoTrabalho = prompt("Digite o turno de trabalho (M para matutino, V para vespertino, N para noturno):");
+            var categoriaFuncionario = prompt("Digite a categoria do funcionário (F para funcionário, G para gerente):");
+            var salarioMinimo = parseFloat(prompt("Digite o valor do salário-mínimo:"));
+
+            var valorHora;
+            if (categoriaFuncionario === 'F') {
+                if (turnoTrabalho === 'M') {
+                    valorHora = 0.1 * salarioMinimo;
+                } else if (turnoTrabalho === 'V') {
+                    valorHora = 0.12 * salarioMinimo;
+                } else if (turnoTrabalho === 'N') {
+                    valorHora = 0.15 * salarioMinimo;
+                }
+            } else if (categoriaFuncionario === 'G') {
+                if (turnoTrabalho === 'M') {
+                    valorHora = 0.2 * salarioMinimo;
+                } else if (turnoTrabalho === 'V') {
+                    valorHora = 0.25 * salarioMinimo;
+                } else if (turnoTrabalho === 'N') {
+                    valorHora = 0.3 * salarioMinimo;
+                }
+            }
+
+            var salarioInicial = valorHora * horasTrabalhadas;
+            var auxilioAlimentacao;
+            if (salarioInicial <= 2 * salarioMinimo) {
+                auxilioAlimentacao = 0.15 * salarioInicial;
+            } else if (salarioInicial <= 4 * salarioMinimo) {
+                auxilioAlimentacao = 0.10 * salarioInicial;
+            } else {
+                auxilioAlimentacao = 0.05 * salarioInicial;
+            }
+
+            var salarioFinal = salarioInicial + auxilioAlimentacao;
+
+            alert("Código do funcionário: " + codigoFuncionario +
+                  "\nNúmero de horas trabalhadas: " + horasTrabalhadas +
+                  "\nValor da hora trabalhada: R$" + valorHora.toFixed(2) +
+                  "\nSalário inicial: R$" + salarioInicial.toFixed(2) +
+                  "\nAuxílio-alimentação: R$" + auxilioAlimentacao.toFixed(2) +
+                  "\nSalário final: R$" + salarioFinal.toFixed(2));
+        }
+    </script>
+</head>
+<body>
+    <h1>Calculadora de Folha de Pagamento</h1>
+    <button onclick="calcularPagamento()">Calcular Pagamento</button>
+</body>
+</html>
